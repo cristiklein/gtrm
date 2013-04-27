@@ -1,7 +1,10 @@
-all: gtrm.c
-	gcc -c dl_syscalls.c
-	gcc -o gtrm gtrm.c dl_syscalls.o -lpthread -lm -ljobsignaler -lrt 
+CFLAGS=-g
+LDLIBS=-lpthread -lm -ljobsignaler -lrt
+
+all: gtrm
+
+gtrm: dl_syscalls.o gtrm.o
 
 clean:
-	rm -f gtrm dl_syscalls.o
+	rm -f gtrm *.o
 
